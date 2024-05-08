@@ -1,5 +1,5 @@
 <template>
-  <div>secret</div>
+  <div>You get a gift for logging in!</div>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="error" class="error">{{ error.message }}</div>
+    <div v-if="error" class="error">Error when registering</div>
     <form @submit.prevent="pressed">
       Register
       <div class="email">
@@ -17,31 +17,26 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-interface User {
-  email: string;
-  password: string;
-}
 
-interface Error {
-  message: string;
-}
+import { User, Error } from "../types/types";
 
-const email = ref<string>("");
-const password = ref<string>("");
-const error = ref<Error | null>(null);
+const email = ref<User["email"]>("");
+const password = ref<User["password"]>("");
+const error = ref<Error["message"]>(null);
 
-async function pressed(user: User) {
+async function pressed() {
   try {
     const auth = getAuth();
     const userCredential = await createUserWithEmailAndPassword(
       auth,
-      user.email,
-      user.password
+      email.value,
+      password.value
     );
     const createdUser = userCredential.user;
     console.log(`deu bom fml ${createdUser}`);
   } catch (err) {
-    const error = err;
+    error.value = true;
+    console.log(err);
   }
 }
 </script>

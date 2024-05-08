@@ -3,10 +3,10 @@
     <TopHeader />
     <h1>Teste</h1>
     <p><strong>pagina atual:</strong> {{ $route.fullPath }}</p>
-    <nav>
-      <RouterLink to="/">Go to Login</RouterLink>
-      <RouterLink to="/register">Go to Register</RouterLink>
-      <RouterLink to="/secret">Go to Secret</RouterLink>
+    <nav class="w-full flex items-center justify-center gap-12 p-10">
+      <RouterLink to="/">Login</RouterLink>
+      <RouterLink to="/register">Register</RouterLink>
+      <RouterLink to="/secret">Secret</RouterLink>
     </nav>
     <main>
       <RouterView />
