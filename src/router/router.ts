@@ -16,7 +16,7 @@ const routes: RouteRecordRaw[] = [
     path: "/secret",
     name: "Secret",
     component: Secret,
-    meta: { requiresAuth: true } as Meta,
+    meta: { requiresAuth: true },
   },
 ];
 
