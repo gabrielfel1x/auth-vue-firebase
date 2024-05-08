@@ -3,7 +3,7 @@
     <div class="left">
       <p class="font-bold text-lg mb-4">
         CURRENT PAGE:
-        <span class="font-black text-tertiary">{{ $route.name }}</span>
+        <span class="font-black text-secondary">{{ $route.name }}</span>
       </p>
       <TopHeader />
     </div>
