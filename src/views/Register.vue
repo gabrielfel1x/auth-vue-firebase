@@ -2,14 +2,25 @@
   <div>
     <div v-if="error" class="error">Error when registering</div>
     <form @submit.prevent="pressed">
-      Register
-      <div class="email">
-        <input type="email" v-model="email" placeholder="email" />
+      <div class="email m-2">
+        <input
+          type="email"
+          v-model="email"
+          placeholder="email"
+          class="py-6 px-12"
+        />
       </div>
-      <div class="password">
-        <input type="password" v-model="password" placeholder="password" />
+      <div class="password m-2">
+        <input
+          type="password"
+          v-model="password"
+          placeholder="password"
+          class="py-6 px-12"
+        />
       </div>
-      <button type="submit">Register</button>
+      <button type="submit" class="m-2 text-blackColor bg-whiteColor font-bold">
+        Register
+      </button>
     </form>
   </div>
 </template>
@@ -41,5 +52,8 @@ async function pressed() {
 }
 </script>
 
-<style>
+<style scoped>
+button:hover {
+  @apply bg-blackColor text-whiteColor;
+}
 </style>

@@ -1,8 +1,14 @@
 <template>
-  <div>
-    Logged In: <span v-if="loggedIn">Yes</span><span v-else>No</span>
+  <div class="font-bold">
+    Logged In: <span v-if="loggedIn" class="text-greenColor">Yes</span
+    ><span v-else class="text-redColor">No</span>
     <div>
-      <button @click="signOutUser">Sign Out</button>
+      <button
+        @click="signOutUser"
+        class="font-bold bg-blackColor text-whiteColor"
+      >
+        Sign Out
+      </button>
     </div>
   </div>
 </template>
@@ -32,5 +38,8 @@ onMounted(() => {
 });
 </script>
 
-<style>
+<style scoped>
+button:hover {
+  @apply text-blackColor bg-whiteColor;
+}
 </style>

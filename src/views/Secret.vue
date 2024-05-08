@@ -1,5 +1,5 @@
 <template>
-  <div>You get a gift for logging in!</div>
+  <div class="text-base">You get a gift for logging in!</div>
 </template>
 
 <script>

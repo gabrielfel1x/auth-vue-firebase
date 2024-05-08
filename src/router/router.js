@@ -6,9 +6,14 @@ import Register from "../views/Register.vue";
 import Secret from "../views/Secret.vue";
 
 const routes = [
-  { path: "/", component: Login },
-  { path: "/register", component: Register },
-  { path: "/secret", component: Secret, meta: { requiresAuth: true } },
+  { path: "/", name: "Login", component: Login },
+  { path: "/register", name: "Register", component: Register },
+  {
+    path: "/secret",
+    name: "Secret",
+    component: Secret,
+    meta: { requiresAuth: true },
+  },
 ];
 
 const router = createRouter({

@@ -1,19 +1,29 @@
 <template>
-  <div>
+  <div class="flex flex-col">
     <form @submit.prevent="pressed">
-      <div class="email">
-        <input type="email" v-model="email" placeholder="email" />
+      <div class="email m-2">
+        <input
+          type="email"
+          v-model="email"
+          placeholder="email"
+          class="py-6 px-12"
+        />
       </div>
-      <div class="password">
-        <input type="password" v-model="password" placeholder="password" />
+      <div class="password m-2">
+        <input
+          type="password"
+          v-model="password"
+          placeholder="password"
+          class="py-6 px-12"
+        />
       </div>
-      <button>Login</button>
+      <button class="m-2 text-blackColor bg-whiteColor font-bold">Login</button>
     </form>
     <div class="error" v-if="error">Error when logging in</div>
     <div>{{ messageError }}</div>
     <span
       >Need an account? Click Here to
-      <router-link to="/register">register</router-link></span
+      <router-link to="/register">Register</router-link>.</span
     >
   </div>
 </template>
@@ -43,3 +53,9 @@ async function pressed() {
   }
 }
 </script>
+
+<style scoped>
+button:hover {
+  @apply bg-blackColor text-whiteColor;
+}
+</style>
