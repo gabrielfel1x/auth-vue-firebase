@@ -1,18 +1,22 @@
-import { createMemoryHistory, createRouter } from "vue-router";
+import { createMemoryHistory, createRouter, RouteRecordRaw } from "vue-router";
 import { getAuth } from "firebase/auth";
 
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Secret from "../views/Secret.vue";
 
-const routes = [
+interface Meta {
+  requiresAuth?: boolean;
+}
+
+const routes: RouteRecordRaw[] = [
   { path: "/", name: "Login", component: Login },
   { path: "/register", name: "Register", component: Register },
   {
     path: "/secret",
     name: "Secret",
     component: Secret,
-    meta: { requiresAuth: true },
+    meta: { requiresAuth: true } as Meta,
   },
 ];
 
@@ -22,9 +26,11 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+  const requiresAuth: boolean = to.matched.some(
+    (record) => (record.meta as Meta).requiresAuth
+  );
   const auth = getAuth();
-  const isAuthenticated = auth.currentUser;
+  const isAuthenticated: boolean | null = auth.currentUser !== null;
   console.log("isauthenticated?:", isAuthenticated);
   if (requiresAuth && !isAuthenticated) {
     next("/");

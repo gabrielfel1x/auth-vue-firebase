@@ -23,7 +23,8 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+// @ts-ignore
 import TopHeader from "./components/TopHeader.vue";
 
 export default {
