@@ -5,7 +5,7 @@
     <div>
       <button
         @click="signOutUser"
-        class="font-bold bg-blackColor text-whiteColor"
+        class="font-bold bg-blackColor text-whiteColor mt-4"
       >
         Sign Out
       </button>

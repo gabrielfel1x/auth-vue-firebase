@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row items-center gap-64">
+  <div class="flex flex-row items-center justify-center gap-64">
     <div class="left">
       <p class="font-bold text-lg mb-4">
         CURRENT PAGE:
