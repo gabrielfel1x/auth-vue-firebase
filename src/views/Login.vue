@@ -42,7 +42,6 @@ async function pressed() {
   try {
     const auth = getAuth();
     await signInWithEmailAndPassword(auth, email.value, password.value);
-    console.log("logado fi, exquece!");
   } catch (err) {
     if (err == "auth/too-many-requests") {
       messageError.value =
@@ -56,6 +55,7 @@ async function pressed() {
 
 <style scoped>
 button:hover {
-  @apply bg-blackColor text-whiteColor;
+  color: #f9f9f9;
+  background-color: #1a1a1a;
 }
 </style>
