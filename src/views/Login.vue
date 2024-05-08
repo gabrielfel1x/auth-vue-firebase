@@ -1,5 +1,6 @@
 <template>
-  <div class="flex flex-col">
+  <div v-if="flag" class="font-bold">Loading...</div>
+  <div class="flex flex-col" v-else>
     <form @submit.prevent="pressed">
       <div class="email m-2">
         <input
@@ -37,8 +38,10 @@ const email = ref<User["email"]>("");
 const password = ref<User["password"]>("");
 const error = ref<Error["message"]>(null);
 const messageError = ref<string>("");
+const flag = ref<boolean>(false);
 
 async function pressed() {
+  flag.value = true;
   try {
     const auth = getAuth();
     await signInWithEmailAndPassword(auth, email.value, password.value);
@@ -50,6 +53,7 @@ async function pressed() {
     error.value = true;
     console.log(err);
   }
+  flag.value = false;
 }
 </script>
 

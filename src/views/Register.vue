@@ -1,4 +1,5 @@
 <template>
+  <div v-if="flag" class="font-bold">Loading...</div>
   <div>
     <div v-if="error" class="error">Error when registering</div>
     <form @submit.prevent="pressed">
@@ -34,8 +35,10 @@ import { User, Error } from "../types/types";
 const email = ref<User["email"]>("");
 const password = ref<User["password"]>("");
 const error = ref<Error["message"]>(null);
+const flag = ref<boolean>(false);
 
 async function pressed() {
+  flag.value = true;
   try {
     const auth = getAuth();
     const userCredential = await createUserWithEmailAndPassword(
@@ -49,6 +52,7 @@ async function pressed() {
     error.value = true;
     console.log(err);
   }
+  flag.value = false;
 }
 </script>
 
