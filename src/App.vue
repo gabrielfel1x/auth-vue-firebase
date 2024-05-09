@@ -27,8 +27,4 @@ export default {
 .router-link.router-link-exact-active {
   color: #42b983;
 }
-
-span {
-  text-transform: uppercase;
-}
 </style>

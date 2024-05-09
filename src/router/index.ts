@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import Initial from "../views/Initial.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
-import Secret from "../views/Secret.vue";
+import Home from "../views/Home.vue";
 
 interface Meta {
   requiresAuth?: boolean;
@@ -15,9 +15,9 @@ const routes: RouteRecordRaw[] = [
   { path: "/login", name: "Login", component: Login },
   { path: "/register", name: "Register", component: Register },
   {
-    path: "/secret",
-    name: "Secret",
-    component: Secret,
+    path: "/home",
+    name: "Home",
+    component: Home,
     meta: { requiresAuth: true },
   },
 ];
