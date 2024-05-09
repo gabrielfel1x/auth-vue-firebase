@@ -5,7 +5,7 @@
       <div v-if="flag" class="font-bold text-base text-secondary">
         Loading...
       </div>
-      <form @submit.prevent="pressed" :class="{ dark: flag }">
+      <form @submit.prevent="pressed" :class="{ 'animate-pulse': flag }">
         <div class="email m-2">
           <input
             :disabled="flag"
@@ -88,10 +88,6 @@ async function pressed() {
 button:hover {
   color: #f9f9f9;
   background-color: #1a1a1a;
-}
-
-.dark {
-  opacity: 0.3;
 }
 
 .spinBg {
