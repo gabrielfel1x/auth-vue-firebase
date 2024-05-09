@@ -61,6 +61,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import Spin from "@/components/Spin.vue";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { User, Error } from "../types/types";
 
