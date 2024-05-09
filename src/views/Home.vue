@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { ref, onMounted } from "vue";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   setup() {
@@ -17,9 +17,13 @@ export default {
 
     onMounted(() => {
       const auth = getAuth();
-      if (auth.currentUser) {
-        userEmail.value = auth.currentUser.email;
-      }
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          userEmail.value = user.email;
+        } else {
+          userEmail.value = null;
+        }
+      });
     });
 
     return {

@@ -53,7 +53,7 @@ async function pressed() {
   try {
     const auth = getAuth();
     await signInWithEmailAndPassword(auth, email.value, password.value);
-    router.push("/secret");
+    router.push("/home");
   } catch (err) {
     if (err == "auth/too-many-requests") {
       messageError.value =
