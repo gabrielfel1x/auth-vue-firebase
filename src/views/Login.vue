@@ -8,6 +8,7 @@
       <form @submit.prevent="pressed" :class="{ dark: flag }">
         <div class="email m-2">
           <input
+            :disabled="flag"
             type="email"
             v-model="email"
             placeholder="email"
@@ -16,14 +17,19 @@
         </div>
         <div class="password m-2">
           <input
+            :disabled="flag"
             type="password"
             v-model="password"
             placeholder="password"
             class="input-style py-6 px-12"
           />
         </div>
-        <button class="m-2 text-blackColor bg-whiteColor font-bold">
-          Login
+        <button
+          class="m-2 text-blackColor bg-whiteColor font-bold"
+          :class="{ spinBg: flag }"
+        >
+          <Spin v-if="flag" />
+          <span v-else>Login</span>
         </button>
       </form>
       <div class="error" v-if="error">Error when logging in</div>
@@ -39,6 +45,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import Spin from "@/components/Spin.vue";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { User, Error } from "../types/types";
 
@@ -85,5 +92,11 @@ button:hover {
 
 .dark {
   opacity: 0.3;
+}
+
+.spinBg {
+  background-color: #1a1a1a;
+  outline: none;
+  border: none;
 }
 </style>

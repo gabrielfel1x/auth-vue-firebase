@@ -9,6 +9,7 @@
       <form @submit.prevent="pressed">
         <div class="email m-2">
           <input
+            :disabled="flag"
             type="email"
             v-model="email"
             placeholder="email"
@@ -17,6 +18,7 @@
         </div>
         <div class="password m-2">
           <input
+            :disabled="flag"
             :class="{ 'input-error': passwordError }"
             type="password"
             v-model="password"
@@ -26,7 +28,7 @@
         </div>
         <div class="password m-2">
           <input
-            :disabled="password === ''"
+            :disabled="password === '' || flag"
             :class="{ 'input-error': passwordError }"
             type="password"
             v-model="confirmPassword"
@@ -40,8 +42,10 @@
         <button
           type="submit"
           class="m-2 text-blackColor bg-whiteColor font-bold"
+          :class="{ spinBg: flag }"
         >
-          Register
+          <Spin v-if="flag" />
+          <span v-else>Register</span>
         </button>
       </form>
       <div class="mt-4">
@@ -123,5 +127,11 @@ button:hover {
 }
 .dark {
   opacity: 0.3;
+}
+
+.spinBg {
+  background-color: #1a1a1a;
+  outline: none;
+  border: none;
 }
 </style>
