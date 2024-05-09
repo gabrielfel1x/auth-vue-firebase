@@ -26,7 +26,7 @@ const signOutUser = async () => {
   try {
     await signOut(auth);
     loggedIn.value = false;
-    router.push({ path: "/" });
+    router.push({ path: "/login" });
     console.log("Deslogado com sucesso");
   } catch (error) {
     console.error("Erro ao deslogar:", error);
@@ -43,6 +43,7 @@ onMounted(() => {
 
 <style scoped>
 button:hover {
-  @apply text-blackColor bg-whiteColor;
+  background-color: #f9f9f9;
+  color: #1a1a1a;
 }
 </style>

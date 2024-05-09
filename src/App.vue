@@ -1,35 +1,18 @@
 <template>
-  <div class="flex flex-row items-center justify-center gap-64">
-    <div class="left">
-      <p class="font-bold text-lg mb-4">
-        CURRENT PAGE:
-        <span class="font-black text-secondary">{{ $route.name }}</span>
-      </p>
-      <TopHeader />
-    </div>
-
-    <div class="right bg-blackColor p-24">
-      <p class="mb-12 font-bold text-lg">FORM</p>
-      <nav class="w-full flex items-center justify-center gap-12 p-10 -mt-10">
-        <RouterLink class="router-link" to="/">Login</RouterLink>
-        <RouterLink class="router-link" to="/register">Register</RouterLink>
-        <RouterLink class="router-link" to="/secret">Secret</RouterLink>
-      </nav>
-
-      <main>
-        <RouterView />
-      </main>
-    </div>
+  <div class="h-full">
+    <LogOut class="absolute top-0 right-0 m-4" />
+    <router-view></router-view>
   </div>
 </template>
 
 <script lang="ts">
-// @ts-ignore
-import TopHeader from "./components/TopHeader.vue";
+//@ts-ignore
+import LogOut from "./components/LogOut.vue";
 
 export default {
+  name: "App",
   components: {
-    TopHeader,
+    LogOut,
   },
 };
 </script>
