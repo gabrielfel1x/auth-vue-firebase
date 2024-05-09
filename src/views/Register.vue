@@ -1,8 +1,10 @@
 <template>
   <div class="h-full">
-    <div v-if="flag" class="font-bold">Loading...</div>
-    <div v-else>
+    <div>
       <h1 class="font-semibold">Register</h1>
+      <div v-if="flag" class="font-bold text-base text-secondary">
+        Loading...
+      </div>
       <div v-if="error" class="text-red-600">{{ msgError }}</div>
       <form @submit.prevent="pressed">
         <div class="email m-2">
@@ -118,5 +120,8 @@ async function pressed() {
 button:hover {
   color: #f9f9f9;
   background-color: #1a1a1a;
+}
+.dark {
+  opacity: 0.3;
 }
 </style>

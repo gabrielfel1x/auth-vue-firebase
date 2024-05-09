@@ -1,9 +1,11 @@
 <template>
   <div class="h-full">
-    <div v-if="flag" class="font-bold">Loading...</div>
-    <div class="flex flex-col" v-else>
+    <div class="flex flex-col">
       <h1 class="font-semibold">Login</h1>
-      <form @submit.prevent="pressed">
+      <div v-if="flag" class="font-bold text-base text-secondary">
+        Loading...
+      </div>
+      <form @submit.prevent="pressed" :class="{ dark: flag }">
         <div class="email m-2">
           <input
             type="email"
@@ -79,5 +81,9 @@ async function pressed() {
 button:hover {
   color: #f9f9f9;
   background-color: #1a1a1a;
+}
+
+.dark {
+  opacity: 0.3;
 }
 </style>
