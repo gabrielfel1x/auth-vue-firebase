@@ -1,8 +1,10 @@
 <template>
   <div class="fade-in">
-    <div class="text-2xl font-bold text-secondary">Welcome!!</div>
+    <div class="text-2xl font-bold text-secondary">
+      {{ $t("welcome_message") }}
+    </div>
     <div v-if="userEmail" class="text-base text-gray-400">
-      Logged in as: {{ userEmail }}
+      {{ $t("logged_in_as") }}: {{ userEmail }}
     </div>
   </div>
 </template>

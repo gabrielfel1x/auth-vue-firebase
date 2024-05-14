@@ -1,13 +1,16 @@
 <template>
   <div class="font-bold">
-    Logged In: <span v-if="loggedIn" class="text-greenColor">Yes</span
-    ><span v-else class="text-redColor">No</span>
+    {{ $t("logged_in") }}
+    <span v-if="loggedIn" class="text-greenColor">{{
+      $t("logged_in_yes")
+    }}</span>
+    <span v-else class="text-redColor">{{ $t("logged_in_no") }}</span>
     <div>
       <button
         @click="signOutUser"
         class="font-bold bg-blackColor text-whiteColor mt-4"
       >
-        Sign Out
+        {{ $t("sign_out") }}
       </button>
     </div>
   </div>

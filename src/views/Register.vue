@@ -1,9 +1,9 @@
 <template>
   <div class="h-full">
     <div>
-      <h1 class="font-semibold">Register</h1>
+      <h1 class="font-semibold">{{ $t("register") }}</h1>
       <div v-if="flag" class="font-bold text-base text-secondary">
-        Loading...
+        {{ $t("loading") }}
       </div>
       <div v-if="error" class="text-red-600">{{ msgError }}</div>
       <form @submit.prevent="pressed" :class="{ 'animate-pulse': flag }">
@@ -12,7 +12,7 @@
             :disabled="flag"
             type="email"
             v-model="email"
-            placeholder="email"
+            :placeholder="$t('email_placeholder')"
             class="input-style py-6 px-12"
           />
         </div>
@@ -22,7 +22,7 @@
             :class="{ 'input-error': passwordError }"
             type="password"
             v-model="password"
-            placeholder="password"
+            :placeholder="$t('password_placeholder')"
             class="input-style py-6 px-12"
           />
         </div>
@@ -32,12 +32,12 @@
             :class="{ 'input-error': passwordError }"
             type="password"
             v-model="confirmPassword"
-            placeholder="confirm password"
+            :placeholder="$t('confirm_password_placeholder')"
             class="input-style py-6 px-12"
           />
         </div>
         <div v-if="passwordError" class="text-red-600">
-          Passwords do not match
+          {{ $t("passwords_not_match") }}
         </div>
         <button
           type="submit"
@@ -45,13 +45,13 @@
           :class="{ spinBg: flag }"
         >
           <Spin v-if="flag" />
-          <span v-else>Register</span>
+          <span v-else>{{ $t("register") }}</span>
         </button>
       </form>
       <div class="mt-4">
-        <span
-          >Already have an account?
-          <router-link to="/login">Login</router-link>.</span
+        <span>
+          {{ $t("already_have_account") }}
+          <router-link to="/login"> {{ $t("login") }} </router-link>.</span
         >
       </div>
     </div>
@@ -64,8 +64,10 @@ import { useRouter } from "vue-router";
 import Spin from "@/components/Spin.vue";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { User, Error } from "../types/types";
-
 const route = useRouter();
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const email = ref<User["email"]>("");
 const password = ref<User["password"]>("");
@@ -96,7 +98,7 @@ async function pressed() {
     route.push("/home");
   } catch (err) {
     if ((err = "auth/email-already-in-use")) {
-      msgError.value = "Email is already in use.";
+      msgError.value = t("email_in_use");
       setTimeout(() => {
         msgError.value = "";
       }, 5000);

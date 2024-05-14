@@ -1,11 +1,13 @@
 <template>
   <div class="fade-in">
-    <h1 class="font-bold">Hello!</h1>
+    <h1 class="font-bold">{{ $t("hello_message") }}</h1>
     <div class="text-base text-gray-400">
-      This is an authentication project using Firebase, click below to log in.
+      {{ $t("project_description") }}
     </div>
     <div class="mt-10">
-      <router-link class="text-base" to="/login">LOGIN</router-link>
+      <router-link class="text-base" to="/login">{{
+        $t("login_button")
+      }}</router-link>
     </div>
   </div>
 </template>

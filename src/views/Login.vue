@@ -1,9 +1,9 @@
 <template>
   <div class="h-full">
     <div class="flex flex-col">
-      <h1 class="font-semibold">Login</h1>
+      <h1 class="font-semibold">{{ $t("login_title") }}</h1>
       <div v-if="flag" class="font-bold text-base text-secondary">
-        Loading...
+        {{ $t("loading_message") }}
       </div>
       <form @submit.prevent="pressed" :class="{ 'animate-pulse': flag }">
         <div class="email m-2">
@@ -11,7 +11,7 @@
             :disabled="flag"
             type="email"
             v-model="email"
-            placeholder="email"
+            :placeholder="$t('email_placeholder')"
             class="input-style py-6 px-12"
           />
         </div>
@@ -20,7 +20,7 @@
             :disabled="flag"
             type="password"
             v-model="password"
-            placeholder="password"
+            :placeholder="$t('password_placeholder')"
             class="input-style py-6 px-12"
           />
         </div>
@@ -29,14 +29,15 @@
           :class="{ spinBg: flag }"
         >
           <Spin v-if="flag" />
-          <span v-else>Login</span>
+          <span v-else>{{ $t("login_button") }}</span>
         </button>
       </form>
-      <div class="error" v-if="error">Error when logging in</div>
+      <div class="error" v-if="error">{{ $t("login_error") }}</div>
       <div>{{ messageError }}</div>
       <span class="mt-4"
-        >Need an account? Click Here to
-        <router-link to="/register">Register</router-link>.</span
+        >{{ $t("need_account_message")
+        }}<router-link to="/register">{{ $t("register_link") }}</router-link
+        >.</span
       >
     </div>
   </div>
@@ -48,6 +49,9 @@ import { useRouter } from "vue-router";
 import Spin from "@/components/Spin.vue";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { User, Error } from "../types/types";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const email = ref<User["email"]>("");
 const password = ref<User["password"]>("");
@@ -65,8 +69,7 @@ async function pressed() {
     router.push("/home");
   } catch (err) {
     if (err == "auth/too-many-requests") {
-      messageError.value =
-        "Access temporarily disabled. Please try again later or reset your password.";
+      messageError.value = t("too_many_requests_message");
     }
     error.value = true;
     console.log(err);
